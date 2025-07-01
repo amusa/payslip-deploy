@@ -1,0 +1,94 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    prometheus.io/scheme: http
+    prometheus.io/port: "8080"
+    prometheus.io/path: /api/q/metrics
+    prometheus.io/scrape: "true"
+    app.quarkus.io/build-timestamp: 2025-06-23 - 23:40:40 +0000
+    app.quarkus.io/commit-id: 67ec61d5677cd821ccc728ad942dc5b2060afd40
+    service.beta.kubernetes.io/aws-load-balancer-ssl-ports: https
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:eu-west-1:329005022144:certificate/25ce9f30-1926-4120-8ea2-cd406ee7756f
+    service.beta.kubernetes.io/aws-load-balancer-name: subscription-engine-nbl
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
+    kubernetes.io/ingress.class: alb
+  labels:
+    app.kubernetes.io/name: subscription-engine
+    app.kubernetes.io/version: "1.1"
+    app.kubernetes.io/managed-by: quarkus
+  name: subscription-engine
+  namespace: payslip
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: subscription-engine
+      app.kubernetes.io/version: "1.1"
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scheme: http
+        prometheus.io/port: "8080"
+        prometheus.io/path: /api/q/metrics
+        prometheus.io/scrape: "true"
+        app.quarkus.io/build-timestamp: 2025-06-23 - 23:40:40 +0000
+        app.quarkus.io/commit-id: 67ec61d5677cd821ccc728ad942dc5b2060afd40
+        service.beta.kubernetes.io/aws-load-balancer-ssl-ports: https
+        service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:eu-west-1:329005022144:certificate/25ce9f30-1926-4120-8ea2-cd406ee7756f
+        service.beta.kubernetes.io/aws-load-balancer-name: subscription-engine-nbl
+        service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
+        kubernetes.io/ingress.class: alb
+      labels:
+        app.kubernetes.io/name: subscription-engine
+        app.kubernetes.io/version: "1.1"
+        app.kubernetes.io/managed-by: quarkus
+      namespace: payslip
+    spec:
+      containers:
+        - env:
+            - name: KUBERNETES_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          image: ayemi/subscription-engine:1.1
+          imagePullPolicy: Always
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /api/q/health/live
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 5
+            periodSeconds: 60
+            successThreshold: 1
+            timeoutSeconds: 10
+          name: subscription-engine
+          ports:
+            - containerPort: 8443
+              name: https
+              protocol: TCP
+            - containerPort: 8080
+              name: http
+              protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /api/q/health/ready
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 10
+          startupProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /api/q/health/started
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 10
+      serviceAccountName: subscription-engine

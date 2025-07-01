@@ -1,0 +1,86 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  annotations:
+    app.quarkus.io/commit-id: 67ec61d5677cd821ccc728ad942dc5b2060afd40
+    app.quarkus.io/build-timestamp: 2023-10-11 - 20:26:56 +0000
+  labels:
+    app.kubernetes.io/managed-by: quarkus
+    app.kubernetes.io/name: notification-engine
+    app.kubernetes.io/version: "1.0"
+  name: notification-engine
+  namespace: payslip
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: view-secrets
+  namespace: payslip
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - secrets
+    verbs:
+      - get
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: notification-engine-view-secrets
+  namespace: payslip
+roleRef:
+  kind: Role
+  apiGroup: rbac.authorization.k8s.io
+  name: view-secrets
+subjects:
+  - kind: ServiceAccount
+    apiGroup: ""
+    name: notification-engine
+    namespace: payslip
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: notification-engine-view
+  namespace: payslip
+roleRef:
+  kind: ClusterRole
+  apiGroup: rbac.authorization.k8s.io
+  name: view
+subjects:
+  - kind: ServiceAccount
+    name: notification-engine
+    namespace: payslip
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    app.quarkus.io/commit-id: 67ec61d5677cd821ccc728ad942dc5b2060afd40
+    app.quarkus.io/build-timestamp: 2023-10-11 - 20:26:56 +0000
+    prometheus.io/scrape: "true"
+    prometheus.io/path: /q/metrics
+    prometheus.io/port: "8082"
+    prometheus.io/scheme: http
+  labels:
+    app.kubernetes.io/name: notification-engine
+    app.kubernetes.io/version: "1.0"
+    app.kubernetes.io/managed-by: quarkus
+  name: notification-engine
+  namespace: payslip
+spec:
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 8082
+    - name: https
+      port: 443
+      protocol: TCP
+      targetPort: 8443
+  selector:
+    app.kubernetes.io/name: notification-engine
+    app.kubernetes.io/version: "1.0"
+  type: ClusterIP

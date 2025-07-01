@@ -1,0 +1,11 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payslip-engine
+  namespace: payslip
+spec:  
+  template:
+    metadata:      
+    spec:              
+      nodeSelector:
+        subnet: private

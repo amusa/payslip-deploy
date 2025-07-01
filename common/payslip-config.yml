@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: payslip-config
+  labels:
+    app: payslip
+  namespace: payslip
+data:  
+  STORE_NAME: "cert/JKSkeystore1.jks"
+  SECRET_ALIAS: "selfsignedjks"
+  NOTIFICATION_HOST: "https://paysliplistener.com"
+  LIFECYCLE_HOST: "https://paysliplistener.com"
+  SUBSCRIPTION_DURATION: "120"
+  PAYDAY_CHECK: "false"
