@@ -20,7 +20,7 @@ metadata:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  name: view-secrets
+  name: view-secrets-se
   namespace: payslip
 rules:
   - apiGroups:
@@ -47,12 +47,12 @@ subjects:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: subscription-engine-view-secrets
+  name: subscription-engine-view-secrets-se
   namespace: payslip
 roleRef:
   kind: Role
   apiGroup: rbac.authorization.k8s.io
-  name: view-secrets
+  name: view-secrets-se
 subjects:
   - kind: ServiceAccount
     apiGroup: ""

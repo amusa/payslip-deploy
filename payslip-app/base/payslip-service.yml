@@ -20,7 +20,7 @@ metadata:
   labels:
     app.kubernetes.io/name: payslip-engine
     app.kubernetes.io/version: 1.1.0-SNAPSHOT
-  name: view-secrets
+  name: view-secrets-pe
   namespace: payslip
 rules:
   - apiGroups:
@@ -36,12 +36,12 @@ metadata:
   labels:
     app.kubernetes.io/name: payslip-engine
     app.kubernetes.io/version: 1.1.0-SNAPSHOT
-  name: payslip-engine-view-secrets
+  name: payslip-engine-view-secrets-pe
   namespace: payslip
 roleRef:
   kind: Role
   apiGroup: rbac.authorization.k8s.io
-  name: view-secrets
+  name: view-secrets-pe
 subjects:
   - kind: ServiceAccount
     apiGroup: ""
