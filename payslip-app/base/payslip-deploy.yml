@@ -3,9 +3,9 @@ kind: Deployment
 metadata:
   annotations:
     app.quarkus.io/quarkus-version: 3.23.4
-    #app.quarkus.io/commit-id: 67ec61d5677cd821ccc728ad942dc5b2060afd40
+    app.quarkus.io/commit-id: 67ec61d5677cd821ccc728ad942dc5b2060afd40
     app.quarkus.io/vcs-uri: https://github.com/amusa/payslip-service.git
-    #app.quarkus.io/build-timestamp: 2025-06-24 - 14:42:44 +0000
+    app.quarkus.io/build-timestamp: 2025-06-24 - 14:42:44 +0000
     prometheus.io/scrape: "true"
     prometheus.io/path: /q/metrics
     prometheus.io/port: "8081"
@@ -26,9 +26,9 @@ spec:
     metadata:
       annotations:
         app.quarkus.io/quarkus-version: 3.23.4
-        #app.quarkus.io/commit-id: 67ec61d5677cd821ccc728ad942dc5b2060afd40
+        app.quarkus.io/commit-id: 67ec61d5677cd821ccc728ad942dc5b2060afd40
         app.quarkus.io/vcs-uri: https://github.com/amusa/payslip-service.git
-        #app.quarkus.io/build-timestamp: 2025-06-24 - 14:42:44 +0000
+        app.quarkus.io/build-timestamp: 2025-06-24 - 14:42:44 +0000
         prometheus.io/scrape: "true"
         prometheus.io/path: /q/metrics
         prometheus.io/port: "8081"
