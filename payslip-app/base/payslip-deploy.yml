@@ -20,6 +20,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
+      app.kubernetes.io/managed-by: quarkus
       app.kubernetes.io/name: payslip-engine
       app.kubernetes.io/version: 3.0.2-SNAPSHOT
   template:
