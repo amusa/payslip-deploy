@@ -4,8 +4,7 @@ metadata:
   name: payslip-engine
   namespace: payslip
 spec:  
-  template:
-    metadata:      
+  template:         
     spec:              
       nodeSelector:
         subnet: private
