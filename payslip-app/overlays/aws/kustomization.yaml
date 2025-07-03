@@ -10,4 +10,4 @@ patches:
  
 images:
 - name: ayemi/payslip-engine
-  newTag: "2.1"
+  newTag: "2.0"
