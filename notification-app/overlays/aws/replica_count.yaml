@@ -4,4 +4,4 @@ metadata:
   name: notification-engine
   namespace: payslip
 spec:
-  replicas: 0
+  replicas: 2
