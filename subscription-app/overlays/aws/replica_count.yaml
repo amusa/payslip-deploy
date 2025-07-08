@@ -4,4 +4,4 @@ metadata:
   name: subscription-engine
   namespace: payslip
 spec:
-  replicas: 0
+  replicas: 2
