@@ -8,6 +8,7 @@ metadata:
     prometheus.io/path: /q/metrics
     prometheus.io/port: "8082"
     prometheus.io/scheme: http
+    reloader.stakater.com/auto: "true"
   labels:
     app.kubernetes.io/managed-by: quarkus
     app.kubernetes.io/name: notification-engine

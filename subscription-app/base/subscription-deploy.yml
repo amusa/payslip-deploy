@@ -13,6 +13,7 @@ metadata:
     service.beta.kubernetes.io/aws-load-balancer-name: subscription-engine-nbl
     service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
     kubernetes.io/ingress.class: alb
+    reloader.stakater.com/auto: "true"
   labels:
     app.kubernetes.io/name: subscription-engine
     app.kubernetes.io/version: "1.1"

@@ -10,6 +10,7 @@ metadata:
     prometheus.io/path: /q/metrics
     prometheus.io/port: "8081"
     prometheus.io/scheme: http
+    reloader.stakater.com/auto: "true"
   labels:
     app.kubernetes.io/name: payslip-engine
     app.kubernetes.io/version: "3.0.2"
