@@ -89,7 +89,7 @@ spec:
     - name: https
       port: 443
       protocol: TCP
-      targetPort: 8443
+      targetPort: 8080 #8443
   selector:
     app.kubernetes.io/name: subscription-engine
     app.kubernetes.io/version: "1.1"
