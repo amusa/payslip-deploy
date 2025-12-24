@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: subscription-ingress
+  annotations:
+    # Use the ALB Ingress Controller
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    
+    # SSL Termination Configuration
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:eu-west-1:329005022144:certificate/25ce9f30-1926-4120-8ea2-cd406ee7756f
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
+    
+    # Force HTTP to HTTPS redirection
+    # alb.ingress.kubernetes.io/ssl-redirect: '443'
+    
+    # Target Type: 'ip' routes directly to pods (recommended)
+    alb.ingress.kubernetes.io/target-type: ip
+spec:
+  rules:
+    - host: paysliplistener.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: subscription-engine
+                port:
+                  number: 8083 # Your backend service port
