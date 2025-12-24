@@ -89,16 +89,16 @@ metadata:
   namespace: payslip
 spec:
   ports:
-    - name: http
-      port: 80
-      protocol: TCP
-      targetPort: 8083
+    # - name: http
+    #   port: 80
+    #   protocol: TCP
+    #   targetPort: 8083
       # nodePort: 31411
     - name: https
       port: 443
       protocol: TCP
       targetPort: 8083 #8443
-      # nodePort: 31411
+      nodePort: 31411
   selector:
     app.kubernetes.io/name: subscription-engine
     app.kubernetes.io/version: "1.1"
