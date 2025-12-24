@@ -48,9 +48,9 @@ spec:
           image: ayemi/payslip-engine:2.0
           envFrom:
             - configMapRef:
-                name: payslip-config
+                name: sap-config
             - secretRef:
-                name: payslip-secret
+                name: sap-secret
           imagePullPolicy: Always
           livenessProbe:
             failureThreshold: 3
