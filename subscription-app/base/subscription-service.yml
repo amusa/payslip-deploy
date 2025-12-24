@@ -66,7 +66,7 @@ kind: Service
 metadata:
   annotations:
     prometheus.io/scheme: http
-    prometheus.io/port: "8080"
+    prometheus.io/port: "8083"
     prometheus.io/path: /api/q/metrics
     prometheus.io/scrape: "true"
     app.quarkus.io/build-timestamp: 2025-06-23 - 23:40:40 +0000
@@ -91,11 +91,11 @@ spec:
     - name: http
       port: 80
       protocol: TCP
-      targetPort: 8080
+      targetPort: 8083
     - name: https
       port: 443
       protocol: TCP
-      targetPort: 8080 #8443
+      targetPort: 8083 #8443
   selector:
     app.kubernetes.io/name: subscription-engine
     app.kubernetes.io/version: "1.1"

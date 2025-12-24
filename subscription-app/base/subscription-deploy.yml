@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   annotations:
     prometheus.io/scheme: http
-    prometheus.io/port: "8080"
+    prometheus.io/port: "8083"
     prometheus.io/path: /api/q/metrics
     prometheus.io/scrape: "true"
     app.quarkus.io/build-timestamp: 2025-06-23 - 23:40:40 +0000
@@ -30,7 +30,7 @@ spec:
     metadata:
       annotations:
         prometheus.io/scheme: http
-        prometheus.io/port: "8080"
+        prometheus.io/port: "8083"
         prometheus.io/path: /api/q/metrics
         prometheus.io/scrape: "true"
         app.quarkus.io/build-timestamp: 2025-06-23 - 23:40:40 +0000
@@ -52,7 +52,7 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
-          image: ayemi/subscription-engine:1.1
+          image: ayemi/subscription-engine:2.1
           envFrom:
             - configMapRef:
                 name: payslip-config
@@ -63,7 +63,7 @@ spec:
             failureThreshold: 3
             httpGet:
               path: /api/q/health/live
-              port: 8080
+              port: 8083
               scheme: HTTP
             initialDelaySeconds: 5
             periodSeconds: 60
@@ -74,14 +74,14 @@ spec:
             - containerPort: 8443
               name: https
               protocol: TCP
-            - containerPort: 8080
+            - containerPort: 8083
               name: http
               protocol: TCP
           readinessProbe:
             failureThreshold: 3
             httpGet:
               path: /api/q/health/ready
-              port: 8080
+              port: 8083
               scheme: HTTP
             initialDelaySeconds: 5
             periodSeconds: 10
@@ -91,7 +91,7 @@ spec:
             failureThreshold: 3
             httpGet:
               path: /api/q/health/started
-              port: 8080
+              port: 8083
               scheme: HTTP
             initialDelaySeconds: 5
             periodSeconds: 10
