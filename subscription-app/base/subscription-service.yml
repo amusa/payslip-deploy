@@ -71,21 +71,21 @@ metadata:
     prometheus.io/scrape: "true"
     app.quarkus.io/build-timestamp: 2025-06-23 - 23:40:40 +0000
     app.quarkus.io/commit-id: 67ec61d5677cd821ccc728ad942dc5b2060afd40
-    service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "https"
-    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "arn:aws:acm:eu-west-1:329005022144:certificate/25ce9f30-1926-4120-8ea2-cd406ee7756f"
-    service.beta.kubernetes.io/aws-load-balancer-name: "subscription-engine-nbl"
-    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "http"    
-    kubernetes.io/ingress.class: alb
+    # service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "https"
+    # service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "arn:aws:acm:eu-west-1:329005022144:certificate/25ce9f30-1926-4120-8ea2-cd406ee7756f"
+    # service.beta.kubernetes.io/aws-load-balancer-name: "subscription-engine-nbl"
+    # service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "http"    
+    # kubernetes.io/ingress.class: alb
 
-    service.beta.kubernetes.io/aws-load-balancer-type: "external"
-    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
-    # service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "instance"
+    # service.beta.kubernetes.io/aws-load-balancer-type: "external"
+    # service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
+    ## service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "instance"
     
-    service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
+    # service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
 
-    alb.ingress.kubernetes.io/scheme: "internet-facing"
-    alb.ingress.kubernetes.io/target-type: "ip"
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
+    # alb.ingress.kubernetes.io/scheme: "internet-facing"
+    # alb.ingress.kubernetes.io/target-type: "ip"
+    # alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
 
   labels:
     app.kubernetes.io/name: subscription-engine
@@ -95,20 +95,20 @@ metadata:
   namespace: payslip
 spec:
   # ingressClassName: alb 
-  loadBalancerClass: "eks.amazonaws.com/nlb"
+  # loadBalancerClass: "eks.amazonaws.com/alb"
   # allocateLoadBalancerNodePorts: false
   ports:
     - name: http
-      port: 80
+      port: 8083
       protocol: TCP
       targetPort: 8083
       # nodePort: 31411
-    - name: https
-      port: 443
-      protocol: TCP
-      targetPort: 8083 #8443
-      # nodePort: 31400
+    # - name: https
+    #   port: 443
+    #   protocol: TCP
+    #   targetPort: 8083 #8443
+    #   # nodePort: 31400
   selector:
     app.kubernetes.io/name: subscription-engine
     app.kubernetes.io/version: "1.1"
-  type: LoadBalancer
+  type: ClusterIP
