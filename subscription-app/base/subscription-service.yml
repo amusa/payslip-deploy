@@ -95,11 +95,11 @@ spec:
       protocol: TCP
       targetPort: 8083
       # nodePort: 31411
-    # - name: https
-    #   port: 443
-    #   protocol: TCP
-    #   targetPort: 80 #8443
-    #   # nodePort: 31400
+    - name: https
+      port: 443
+      protocol: TCP
+      targetPort: 80 #8443
+      # nodePort: 31400
   selector:
     app.kubernetes.io/name: subscription-engine
     app.kubernetes.io/version: "1.1"
