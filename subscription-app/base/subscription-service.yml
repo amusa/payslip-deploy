@@ -80,6 +80,12 @@ metadata:
     service.beta.kubernetes.io/aws-load-balancer-type: "external"
     service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
     # service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "instance"
+    
+    service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
+
+    alb.ingress.kubernetes.io/scheme: "internet-facing"
+    alb.ingress.kubernetes.io/target-type: "ip"
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
 
   labels:
     app.kubernetes.io/name: subscription-engine
@@ -89,6 +95,7 @@ metadata:
   namespace: payslip
 spec:
   # ingressClassName: alb 
+  loadBalancerClass: "eks.amazonaws.com/nlb"
   # allocateLoadBalancerNodePorts: false
   ports:
     - name: http
