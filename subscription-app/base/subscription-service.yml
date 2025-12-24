@@ -74,11 +74,12 @@ metadata:
     service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "443" #"https"
     service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "arn:aws:acm:eu-west-1:329005022144:certificate/25ce9f30-1926-4120-8ea2-cd406ee7756f"
     service.beta.kubernetes.io/aws-load-balancer-name: "subscription-engine-nbl"
-    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "http"
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "http"    
     kubernetes.io/ingress.class: alb
 
     service.beta.kubernetes.io/aws-load-balancer-type: "external"
-    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
+    # service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
+    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "instance"
 
   labels:
     app.kubernetes.io/name: subscription-engine
@@ -92,10 +93,12 @@ spec:
       port: 80
       protocol: TCP
       targetPort: 8083
+      nodePort: 32000
     - name: https
       port: 443
       protocol: TCP
       targetPort: 8083 #8443
+      nodePort: 32000
   selector:
     app.kubernetes.io/name: subscription-engine
     app.kubernetes.io/version: "1.1"
