@@ -103,4 +103,4 @@ spec:
   selector:
     app.kubernetes.io/name: subscription-engine
     app.kubernetes.io/version: "1.1"
-  # type: ClusterIP #LoadBalancer
+  type: LoadBalancer
