@@ -4,4 +4,4 @@ metadata:
   name: payslip-engine
   namespace: payslip
 spec:
-  replicas: 4
+  replicas: 2
