@@ -46,6 +46,11 @@ spec:
                 fieldRef:
                   fieldPath: metadata.namespace
           image: ayemi/payslip-engine:2.0
+          envFrom:
+            - configMapRef:
+                name: payslip-config
+            - secretRef:
+                name: payslip-secret
           imagePullPolicy: Always
           livenessProbe:
             failureThreshold: 3
