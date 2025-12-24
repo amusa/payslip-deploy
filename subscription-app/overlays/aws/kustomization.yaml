@@ -9,4 +9,4 @@ patches:
  
 images:
 - name: ayemi/subscription-engine
-  newTag: "2.0"
+  newTag: "2.1"

@@ -88,12 +88,13 @@ metadata:
   name: subscription-engine
   namespace: payslip
 spec:
+  allocateLoadBalancerNodePorts: false
   ports:
-    # - name: http
-    #   port: 80
-    #   protocol: TCP
-    #   targetPort: 8083
-      # nodePort: 31411
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 8083
+      nodePort: 31411
     - name: https
       port: 443
       protocol: TCP
