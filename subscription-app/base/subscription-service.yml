@@ -88,7 +88,7 @@ metadata:
   name: subscription-engine
   namespace: payslip
 spec:
-  ingressClassName: alb 
+  # ingressClassName: alb 
   # allocateLoadBalancerNodePorts: false
   ports:
     - name: http
