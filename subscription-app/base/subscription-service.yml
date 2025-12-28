@@ -94,8 +94,8 @@ metadata:
   name: subscription-engine
   namespace: payslip
 spec:
-  ingressClassName: alb 
-  loadBalancerClass: "eks.amazonaws.com/alb"
+  ingressClassName: nlb 
+  loadBalancerClass: "eks.amazonaws.com/nlb"
   # allocateLoadBalancerNodePorts: false
   ports:
     - name: http
@@ -103,10 +103,10 @@ spec:
       protocol: TCP
       targetPort: 8083
       # nodePort: 31411
-    - name: https
-      port: 443
-      protocol: TCP
-      targetPort: 8083 #8443
+    # - name: https
+    #   port: 443
+    #   protocol: TCP
+    #   targetPort: 8083 #8443
     #   # nodePort: 31400
   selector:
     app.kubernetes.io/name: subscription-engine
