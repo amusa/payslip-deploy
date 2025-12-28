@@ -77,8 +77,8 @@ metadata:
     # service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "http"    
     # kubernetes.io/ingress.class: alb
 
-    # service.beta.kubernetes.io/aws-load-balancer-type: "external"
-    # service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
+    service.beta.kubernetes.io/aws-load-balancer-type: "external"
+    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
     # # service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "instance"
     
     # service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
@@ -95,7 +95,7 @@ metadata:
   namespace: payslip
 spec:
   # ingressClassName: nlb 
-  # loadBalancerClass: "eks.amazonaws.com/nlb"
+  loadBalancerClass: eks.amazonaws.com/nlb
   # allocateLoadBalancerNodePorts: false
   ports:
     - name: http
