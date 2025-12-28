@@ -94,28 +94,28 @@ spec:
     app.kubernetes.io/version: 3.0.2-SNAPSHOT
   type: ClusterIP
 ---
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  annotations:
-    app.quarkus.io/quarkus-version: 3.23.4
-    app.quarkus.io/commit-id: 56e9478750bb14fb70d55850854dba22c8c57425
-    app.quarkus.io/vcs-uri: https://github.com/amusa/payslip-service.git
-    app.quarkus.io/build-timestamp: 2025-06-30 - 23:27:22 +0000
-  labels:
-    app.kubernetes.io/name: payslip-engine
-    app.kubernetes.io/version: 3.0.2-SNAPSHOT
-    app.kubernetes.io/managed-by: quarkus
-  name: payslip-engine
-  namespace: payslip
-spec:
-  selector:
-    matchLabels:
-      app.kubernetes.io/name: payslip-engine
-      app.kubernetes.io/version: 3.0.2-SNAPSHOT
-  endpoints:
-    - scheme: http
-      targetPort: 8081
-      path: /q/metrics
-      interval: 10s
-      honorLabels: true
+# apiVersion: monitoring.coreos.com/v1
+# kind: ServiceMonitor
+# metadata:
+#   annotations:
+#     app.quarkus.io/quarkus-version: 3.23.4
+#     app.quarkus.io/commit-id: 56e9478750bb14fb70d55850854dba22c8c57425
+#     app.quarkus.io/vcs-uri: https://github.com/amusa/payslip-service.git
+#     app.quarkus.io/build-timestamp: 2025-06-30 - 23:27:22 +0000
+#   labels:
+#     app.kubernetes.io/name: payslip-engine
+#     app.kubernetes.io/version: 3.0.2-SNAPSHOT
+#     app.kubernetes.io/managed-by: quarkus
+#   name: payslip-engine
+#   namespace: payslip
+# spec:
+#   selector:
+#     matchLabels:
+#       app.kubernetes.io/name: payslip-engine
+#       app.kubernetes.io/version: 3.0.2-SNAPSHOT
+#   endpoints:
+#     - scheme: http
+#       targetPort: 8081
+#       path: /q/metrics
+#       interval: 10s
+#       honorLabels: true
