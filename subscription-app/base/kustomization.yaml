@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
 - subscription-service.yml
 - subscription-deploy.yml
-- subscription-ingress.yml
+# - subscription-ingress.yml
