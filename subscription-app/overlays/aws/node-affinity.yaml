@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: payslip-engine
+  name: subscription-engine
   namespace: payslip
 # spec:  
 #   template:         
