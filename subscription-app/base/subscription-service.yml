@@ -95,7 +95,7 @@ metadata:
   namespace: payslip
 spec:
   # ingressClassName: nlb 
-  loadBalancerClass: "eks.amazonaws.com/nlb"
+  # loadBalancerClass: "eks.amazonaws.com/nlb"
   # allocateLoadBalancerNodePorts: false
   ports:
     - name: http
