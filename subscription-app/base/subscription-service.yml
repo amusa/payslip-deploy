@@ -94,7 +94,7 @@ metadata:
   name: subscription-engine
   namespace: payslip
 spec:
-  ingressClassName: nlb 
+  # ingressClassName: nlb 
   loadBalancerClass: "eks.amazonaws.com/nlb"
   # allocateLoadBalancerNodePorts: false
   ports:
