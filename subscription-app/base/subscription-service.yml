@@ -75,7 +75,7 @@ metadata:
     service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "arn:aws:acm:eu-west-1:329005022144:certificate/25ce9f30-1926-4120-8ea2-cd406ee7756f"
     service.beta.kubernetes.io/aws-load-balancer-name: "subscription-engine-nbl"
     service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "http"    
-    kubernetes.io/ingress.class: alb
+    #kubernetes.io/ingress.class: alb
 
     service.beta.kubernetes.io/aws-load-balancer-type: "external"
     service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
@@ -83,9 +83,9 @@ metadata:
     
     service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
 
-    alb.ingress.kubernetes.io/scheme: "internet-facing"
-    alb.ingress.kubernetes.io/target-type: "ip"
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
+    # alb.ingress.kubernetes.io/scheme: "internet-facing"
+    # alb.ingress.kubernetes.io/target-type: "ip"
+    # alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
 
   labels:
     app.kubernetes.io/name: subscription-engine
