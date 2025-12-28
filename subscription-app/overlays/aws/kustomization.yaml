@@ -6,6 +6,7 @@ resources:
  
 patches:
 - path: replica_count.yaml
+- path: node-affinity.yaml
  
 images:
 - name: ayemi/subscription-engine

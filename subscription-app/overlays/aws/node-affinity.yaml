@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payslip-engine
+  namespace: payslip
+# spec:  
+#   template:         
+#     spec:              
+#       nodeSelector:
+#         subnet: private
+spec:  
+  template:   
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: eks.amazonaws.com/compute-type
+                operator: In
+                values:
+                - auto
+              - key: karpenter.sh/nodepool
+                operator: In
+                values:
+                - out-facing-pool
+                
