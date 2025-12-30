@@ -8,19 +8,13 @@ metadata:
     prometheus.io/port: "8083"
     prometheus.io/path: /api/q/metrics
     prometheus.io/scrape: "true"
-    # Use the ALB Ingress Controller
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
-    
-    # SSL Termination Configuration
     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:eu-west-1:329005022144:certificate/25ce9f30-1926-4120-8ea2-cd406ee7756f
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
-    
-    # Force HTTP to HTTPS redirection
-    # alb.ingress.kubernetes.io/ssl-redirect: '443'
-    
-    # Target Type: 'ip' routes directly to pods (recommended)
+    alb.ingress.kubernetes.io/ssl-redirect: '443'
     alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/backend-protocol: HTTP
 spec:
   ingressClassName: alb 
   rules:
@@ -33,5 +27,5 @@ spec:
               service:
                 name: subscription-engine
                 port:
-                  number: 8083 # Your backend service port
-                
+                  number: 8083
+              
