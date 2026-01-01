@@ -49,6 +49,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: sap-config
+            - configMapRef:
+                name: payslip-config
             - secretRef:
                 name: sap-secret
           imagePullPolicy: Always
