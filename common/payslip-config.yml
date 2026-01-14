@@ -12,5 +12,5 @@ data:
   NOTIFICATION_HOST: "https://paysliplistener.com"
   LIFECYCLE_HOST: "https://paysliplistener.com"
   SUBSCRIPTION_DURATION: "120"
-  PAYDAY_CHECK: "true"
+  PAYDAY_CHECK: "false"
   OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: "http://k8s-mon-alloy-receiver.monitoring.svc.cluster.local:4317"
